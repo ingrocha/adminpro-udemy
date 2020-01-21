@@ -20,7 +20,7 @@ import { PagesModule } from './pages/pages.module';
   imports: [
     BrowserModule,
     PagesModule,
-    APP_ROUTES
+    APP_ROUTES,
   ],
   providers: [],
   bootstrap: [AppComponent]
