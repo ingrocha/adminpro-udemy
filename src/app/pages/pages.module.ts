@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { IncrementadorComponent } from '../components/incrementador/incrementador.component';
 import { ChartsModule } from 'ng2-charts';
 import { DonaComponent } from '../components/dona/dona.component';
+import { AccountSettingsComponent } from './account-settings/account-settings.component';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { DonaComponent } from '../components/dona/dona.component';
     PagesComponent,
     IncrementadorComponent,
     DonaComponent,
+    AccountSettingsComponent,
   ],
   exports: [
     DashboardComponent,
