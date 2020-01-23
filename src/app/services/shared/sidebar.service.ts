@@ -9,7 +9,7 @@ export class SidebarService {
     {
       titulo: 'Principal',
       icono: 'mdi mdi-gauge',
-      submenu:[
+      submenu: [
         {
           titulo: 'Dashboard',
           url: '/dashboard'
@@ -22,9 +22,17 @@ export class SidebarService {
           titulo: 'Gráficas',
           url: '/graficas1'
       },
+        {
+          titulo: 'Promesas',
+          url: '/promesas'
+      },
+        {
+          titulo: 'Rxjs',
+          url: '/rxjs'
+      },
       ]
     }
-  ]
+  ];
 
   constructor() { }
 }
