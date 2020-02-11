@@ -1,3 +1,5 @@
+import { LoginGuardGuard } from '../services/service.index';
+
 import { RouterModule, Routes } from '@angular/router';
 import { PagesComponent } from './pages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -12,6 +14,7 @@ const routes: Routes = [
     {
         path: '',
         component: PagesComponent,
+        canActivate: [ LoginGuardGuard ],
         children: [
             { path: 'dashboard', component: DashboardComponent, data: {titulo: 'Dashboard'} },
             { path: 'progress', component: ProgressComponent, data: {titulo: 'Progress'} },
