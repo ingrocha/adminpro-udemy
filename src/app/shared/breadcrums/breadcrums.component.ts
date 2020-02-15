@@ -14,7 +14,6 @@ export class BreadcrumsComponent implements OnInit {
 
   constructor( private router: Router , private title: Title, meta: Meta ) {
     this.getDataRoute().subscribe( evento => {
-      console.log(evento);
       this.titulo = evento.titulo;
       title.setTitle(this.titulo);
       const metatTag: MetaDefinition = {

@@ -20,10 +20,8 @@ export class SubirArchivoService {
 		xhr.onreadystatechange = function() {
 			if (xhr.readyState === 4) {
 	  			if (xhr.status === 200) {
-	  				console.log( 'Imagen subida' );
 					resolve( JSON.parse( xhr.response ) );
 				} else {
-					console.log('Fallo la subida');
 					reject( JSON.parse( xhr.response ) );
 				}
 			}

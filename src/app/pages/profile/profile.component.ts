@@ -31,12 +31,10 @@ export class ProfileComponent implements OnInit {
   	}
 
   	this._usuarioService.actualizarUsuario( this.usuario )
-  				.subscribe( resp =>{
-  					console.log(resp);
-  				})
+  				.subscribe();
   }
 
-  selccionImagen( archivo: File ){
+  selccionImagen( archivo: File ) {
   	if (!archivo) {
   		this.imagenSubir = null;
   		return;

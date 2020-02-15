@@ -45,9 +45,6 @@ export class IncrementadorComponent implements OnInit {
 
   onChange( event: number ) {
 
-
-     console.log();
-
      if ( event <= 0 ) {
       this.porcentaje = 0;
     } else if (event >= 100) {

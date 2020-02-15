@@ -117,7 +117,9 @@ export class UsuarioService {
     return this.http.put( url, usuario )
               .pipe(
                 map ( (resp: any) => {
-                  this.guardarStorage( resp.usuario._id, this.token, resp.usuario);
+                  if (usuario._id === this.usuario._id) {
+                    this.guardarStorage( resp.usuario._id, this.token, resp.usuario);
+                  }
                   Swal.fire({
                     title: 'Usuario actualizado',
                     text: usuario.email,
@@ -132,7 +134,6 @@ export class UsuarioService {
     this._subirArchivoService.subirArchivo( archivo, 'usuarios', id)
           .then( (resp: any) => {
             this.usuario.img = resp.usuario.img;
-            console.log( resp );
             Swal.fire({
               title: 'Imagen actualizada',
               text: this.usuario.nombre,
@@ -149,5 +150,36 @@ export class UsuarioService {
             console.error(resp);
           });
   }
+
+  cargarUsuarios( desde: number = 0){
+    let url = URL_SERVICIOS + '/usuario?desde=' + desde;
+
+    return this.http.get( url );
+  }
+
+  buscarUsuario( termino: string){
+    let url = URL_SERVICIOS + '/busqueda/coleccion/usuarios/' + termino;
+
+    return this.http.get( url );
+  }
+
+  borrarUsuario ( id : string ){
+    let url = URL_SERVICIOS + '/usuario/' + id;
+    url += '?token=' + this.token;
+
+    return this.http.delete( url )
+          .pipe(
+            map ( resp => {
+              Swal.fire(
+                      '¡Borrado!',
+                      'El usuario fu borrado correctamente',
+                      'success'
+                    );
+              return true;
+            })
+            );
+  }
+
+
 
 }

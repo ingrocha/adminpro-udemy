@@ -65,7 +65,6 @@ export class RegisterComponent implements OnInit {
     }
 
     if (!this.forma.value.condiciones) {
-      console.log( 'Debe de aceptar las condiciones' );
       swal('Importante', 'Debe aceptar las opciones', 'warning');
       return;
     }
@@ -78,7 +77,6 @@ export class RegisterComponent implements OnInit {
     this._usuarioService.crearUsuario( usuario )
           .subscribe( resp => {
             this.router.navigate(['/login'])
-            console.log(resp);
           });
   }
 

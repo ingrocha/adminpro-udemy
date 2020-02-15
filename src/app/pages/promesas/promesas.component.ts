@@ -11,7 +11,7 @@ export class PromesasComponent implements OnInit {
     this.contarTres().then(
       () => console.log('Termino')
     )
-    .catch( error => console.log('Error en la promesa', error));
+    .catch( error => console.error('Error en la promesa', error));
   }
 
   ngOnInit() {
