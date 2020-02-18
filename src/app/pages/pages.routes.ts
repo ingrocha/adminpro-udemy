@@ -3,7 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { Graficas1Component } from './graficas1/graficas1.component';
+import { HospitalesComponent } from './hospitales/hospitales.component';
 import { LoginGuardGuard } from '../services/service.index';
+import { MedicoComponent } from './medicos/medico.component';
+import { MedicosComponent } from './medicos/medicos.component';
 import { PagesComponent } from './pages.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ProgressComponent } from './progress/progress.component';
@@ -27,6 +30,9 @@ const routes: Routes = [
             { path: 'perfil', component: ProfileComponent, data: {titulo: 'Perfil de usuario'}  },
             // Mantenimientos
             { path: 'usuarios', component: UsuariosComponent, data: {titulo: 'Mantenimiento usuarios'}  },
+            { path: 'hospitales', component: HospitalesComponent, data: {titulo: 'Mantenimiento hospitales'}  },
+            { path: 'medicos', component: MedicosComponent, data: {titulo: 'Mantenimiento medicos'}  },
+            { path: 'medico/:id', component: MedicoComponent, data: {titulo: 'Actualizar medico'}  },
             { path: '', redirectTo: 'dashboard', pathMatch: 'full'},
         ]
     }

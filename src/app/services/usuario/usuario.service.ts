@@ -27,11 +27,11 @@ export class UsuarioService {
     this.cargarStorage();
   }
 
-  estaLogueado(){
-    return ( this.token.length > 5 )? true : false;
+  estaLogueado() {
+    return ( this.token.length > 5 ) ? true : false;
   }
 
-  cargarStorage(){
+  cargarStorage() {
     if (localStorage.getItem('token')) {
       this.token = localStorage.getItem('token');
       this.usuario = JSON.parse(localStorage.getItem('usuario'));
@@ -41,13 +41,13 @@ export class UsuarioService {
     }
   }
 
-  guardarStorage( id: string, token: string, usuario: Usuario){
-  localStorage.setItem('id', id);
-  localStorage.setItem('token', token);
-  localStorage.setItem('usuario', JSON.stringify(usuario));
+  guardarStorage( id: string, token: string, usuario: Usuario) {
+    localStorage.setItem('id', id);
+    localStorage.setItem('token', token);
+    localStorage.setItem('usuario', JSON.stringify(usuario));
 
-  this.usuario = usuario;
-  this.token = token;
+    this.usuario = usuario;
+    this.token = token;
   }
 
 // ===============================================
@@ -111,10 +111,10 @@ export class UsuarioService {
 
   }
 
-  actualizarUsuario( usuario: Usuario ){
+  actualizarUsuario( usuario: Usuario ) {
     let url = URL_SERVICIOS + '/usuario/' + usuario._id;
     url += '?token=' + this.token;
-    return this.http.put( url, usuario )
+    return this.http.put( url, usuario ) 
               .pipe(
                 map ( (resp: any) => {
                   if (usuario._id === this.usuario._id) {
@@ -130,7 +130,7 @@ export class UsuarioService {
 
   }
 
-  cambiarImagen( archivo: File, id: string ){
+  cambiarImagen( archivo: File, id: string ) {
     this._subirArchivoService.subirArchivo( archivo, 'usuarios', id)
           .then( (resp: any) => {
             this.usuario.img = resp.usuario.img;
@@ -151,19 +151,19 @@ export class UsuarioService {
           });
   }
 
-  cargarUsuarios( desde: number = 0){
+  cargarUsuarios( desde: number = 0) {
     let url = URL_SERVICIOS + '/usuario?desde=' + desde;
 
     return this.http.get( url );
   }
 
-  buscarUsuario( termino: string){
+  buscarUsuario( termino: string) {
     let url = URL_SERVICIOS + '/busqueda/coleccion/usuarios/' + termino;
 
     return this.http.get( url );
   }
 
-  borrarUsuario ( id : string ){
+  borrarUsuario ( id : string ) {
     let url = URL_SERVICIOS + '/usuario/' + id;
     url += '?token=' + this.token;
 
@@ -172,7 +172,7 @@ export class UsuarioService {
             map ( resp => {
               Swal.fire(
                       '¡Borrado!',
-                      'El usuario fu borrado correctamente',
+                      'El usuario fue borrado correctamente',
                       'success'
                     );
               return true;

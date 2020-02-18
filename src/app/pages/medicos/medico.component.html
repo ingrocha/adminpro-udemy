@@ -1,0 +1,51 @@
+<div class="row animated fadeIn">
+  <div class="col-6">
+    <div class="card">
+      <div class="card card-body">
+        <h3 class="box-title m-b-0">Medico {{ medico.nombre }}</h3>
+        <hr>
+        <div class="row">
+          <div class="col-sm-12 col-xs-12">
+            <form #f='ngForm' ngNativeValidate (ngSubmit)="guardarMedico( f )">
+              <div class="form-group">
+                <label>Nombre del medico</label>
+                <input [(ngModel)]="medico.nombre" name="nombre" type="text" class="form-control" placeholder="Nombre del medico" required>
+              </div>
+              <div class="form-group">
+                <label>Hospital</label>
+                <select (change)="cambioHospita( $event.target.value )" [(ngModel)]="medico.hospital" name="hospital" class="form-control" placeholder="Seleccione hospital" required>
+                  <option value="">Seleccione hospital</option>
+                  <option *ngFor="let hospital of hospitales" [value]="hospital._id">{{ hospital.nombre }}</option>
+                </select>
+              </div>
+              	<button type="submit" class="btn btn-success waves-effect waves-light m-r-10">
+              		<i class="fa fa-save"></i>
+              		Guardar
+          		</button>
+              <button type="button" [routerLink]="['/medicos']" class="btn btn-inverse waves-effect waves-light">Cancel</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  	<div class="col-3">
+  		<div class="card">
+  			<div class="card-body" align="center">
+  				<h3 class="box-title m-b-0">Hospital</h3>
+  				<h6 class="card-subtitle">{{ hospital.nombre }}</h6>
+  				<img [src]="hospital.img | imagen:'hospitales'" alt="" class="w150 img-rounded">
+  			</div>
+  		</div>
+  	</div>
+  	<div class="col-3" *ngIf="medico._id">
+  		<div class="card">
+  			<div class="card-body" align="center">
+                <h3 class="card-title">Fotografia</h3>
+                <h6 class="card-subtitle">{{ medico.nombre }}</h6>
+                <img (click)="cambiarFoto( medico )" data-toggle="modal" data-target="#cargarImagen" [src]="medico.img | imagen:'medicos'" alt="" class="w150 img-rounded pointer">
+            </div>
+  		</div>
+  	</div>
+</div>
