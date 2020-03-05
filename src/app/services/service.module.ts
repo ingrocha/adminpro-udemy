@@ -3,14 +3,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 
 import {
+  AdminGuard,
   HospitalService,
   LoginGuardGuard,
+  MedicoService,
   SettingsService,
   SharedService,
   SidebarService,
   SubirArchivoService,
-  UsuarioService,
-  MedicoService
+  UsuarioService
 } from './service.index';
 import {
   ModalUploadService,
@@ -31,7 +32,8 @@ import {
     SubirArchivoService,
     ModalUploadService,
     HospitalService,
-    MedicoService
+    MedicoService,
+    AdminGuard
   ]
 })
 export class ServiceModule { }
