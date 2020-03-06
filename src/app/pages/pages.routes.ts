@@ -1,7 +1,11 @@
 import { RouterModule, Routes } from '@angular/router';
 
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
-import { AdminGuard, LoginGuardGuard } from '../services/service.index';
+import {
+  AdminGuard,
+  LoginGuardGuard,
+  VerificaTokenGuard
+} from '../services/service.index';
 import { BusquedaComponent } from './busqueda/busqueda.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { Graficas1Component } from './graficas1/graficas1.component';
@@ -17,12 +21,13 @@ import { UsuariosComponent } from './usuarios/usuarios.component';
 
 
 const routes: Routes = [
-    {
-        path: '',
-        component: PagesComponent,
-        canActivate: [ LoginGuardGuard ],
-        children: [
-            { path: 'dashboard', component: DashboardComponent, data: {titulo: 'Dashboard'} },
+
+            { 
+                path: 'dashboard', 
+                component: DashboardComponent, 
+                data: {titulo: 'Dashboard'},
+                canActivate: [ VerificaTokenGuard ]
+            },
             { path: 'progress', component: ProgressComponent, data: {titulo: 'Progress'} },
             { path: 'graficas1', component: Graficas1Component, data: {titulo: 'Graficas'}  },
             { path: 'promesas', component: PromesasComponent, data: {titulo: 'Promesas'}  },
@@ -41,8 +46,6 @@ const routes: Routes = [
             { path: 'medicos', component: MedicosComponent, data: {titulo: 'Mantenimiento medicos'}  },
             { path: 'medico/:id', component: MedicoComponent, data: {titulo: 'Actualizar medico'}  },
             { path: '', redirectTo: 'dashboard', pathMatch: 'full'},
-        ]
-    }
-];
+        ];
 
 export const PAGES_ROUTES = RouterModule.forChild( routes );

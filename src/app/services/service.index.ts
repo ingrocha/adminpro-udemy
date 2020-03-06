@@ -1,3 +1,5 @@
+export { VerificaTokenGuard } from './guards/verifica-token.guard';
+
 export { AdminGuard } from './guards/admin.guard';
 
 export { MedicoService } from './medico/medico.service';

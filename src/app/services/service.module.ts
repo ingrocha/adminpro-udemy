@@ -11,7 +11,8 @@ import {
   SharedService,
   SidebarService,
   SubirArchivoService,
-  UsuarioService
+  UsuarioService,
+  VerificaTokenGuard
 } from './service.index';
 import {
   ModalUploadService,
@@ -29,6 +30,7 @@ import {
     SharedService,
     UsuarioService,
     LoginGuardGuard,
+    VerificaTokenGuard,
     SubirArchivoService,
     ModalUploadService,
     HospitalService,
